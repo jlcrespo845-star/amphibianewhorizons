@@ -1,20 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amphibia: New Horizons | Website</title>
+
+<title>Amphibia: New Horizons | Website | November 18</title>
 
 <link rel="icon" href="anhfaviconupdated.png">
 
-<!-- Social Media Preview Meta Tags -->
-<meta property="og:title" content="Amphibia: New Horizons | Website">
+<!-- Meta Description -->
+<meta name="description" content="First issue releases worldwide November 18">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Amphibia: New Horizons | Website | November 18">
 <meta property="og:description" content="First issue releases worldwide November 18">
 <meta property="og:image" content="https://jlcrespo845-star.github.io/amphibianewhorizons/thumbnailwebsite.png">
+<meta property="og:image:secure_url" content="https://jlcrespo845-star.github.io/amphibianewhorizons/thumbnailwebsite.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Amphibia: New Horizons">
 <meta property="og:url" content="https://jlcrespo845-star.github.io/amphibianewhorizons/">
 <meta property="og:type" content="website">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Amphibia: New Horizons | Website">
+<meta name="twitter:title" content="Amphibia: New Horizons | Website | November 18">
 <meta name="twitter:description" content="First issue releases worldwide November 18">
 <meta name="twitter:image" content="https://jlcrespo845-star.github.io/amphibianewhorizons/thumbnailwebsite.png">
 
@@ -158,3 +169,82 @@ margin-bottom:10px;
 
 </style>
 </head>
+
+<body>
+
+<div class="topbar">
+<div class="menu-btn" id="menuBtn">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+
+<div class="overlay" id="overlay">
+<img src="ANHRELEASEDATEv2.png" alt="logo">
+<a onclick="goHome()">HOME</a>
+<a onclick="openAbout()">ABOUT</a>
+</div>
+
+<div class="main" id="home">
+<img id="mainLogo" src="ANHRELEASEDATEv2.png" alt="logo">
+</div>
+
+<div id="about">
+<div class="about-container">
+<img src="anhposter (1).png" alt="poster">
+<div class="about-text">
+<div class="heading">PREMISE</div>
+<p style="margin-bottom:20px;">
+Set four years after the original series, Nelson Sanchez is teleported into The Dark Woods. There, a local camping frog family leads him on adventures, twists, and friendships, all while he tries to find his way back home.
+</p>
+
+<p><span class="info-label">Created by:</span> <span class="info-value">Jayden 'Neo' Crespo</span></p>
+<p><span class="info-label">Based on:</span> <span class="info-value">Amphibia TV series by Matt Braly</span></p>
+<p><span class="info-label">Genre:</span> <span class="info-value">Action comedy / Adventure / Portal fantasy</span></p>
+<p><span class="info-label">Authors:</span> <span class="info-value">Jayden 'Neo' Crespo</span></p>
+<p class="info-value">Captain 'Duke Nerd' Bones</p>
+<p class="info-value">Parakalan</p>
+</div>
+</div>
+</div>
+
+<div class="footer">jlcrespo845@gmail.com - Jayden 'Neo' Crespo</div>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const overlay=document.getElementById('overlay');
+const main=document.getElementById('home');
+const about=document.getElementById('about');
+const mainLogo=document.getElementById('mainLogo');
+
+menuBtn.onclick=()=>{
+menuBtn.classList.toggle('active');
+overlay.classList.toggle('active');
+};
+
+function goHome(){
+about.style.display='none';
+main.style.display='flex';
+overlay.classList.remove('active');
+menuBtn.classList.remove('active');
+mainLogo.classList.remove('show');
+setTimeout(()=>{mainLogo.classList.add('show');},100);
+}
+
+function openAbout(){
+main.style.display='none';
+about.style.display='block';
+overlay.classList.remove('active');
+menuBtn.classList.remove('active');
+}
+
+window.onload=()=>{
+setTimeout(()=>{
+mainLogo.classList.add('show');
+},200);
+};
+</script>
+
+</body>
+</html>
