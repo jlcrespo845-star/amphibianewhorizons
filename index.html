@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amphibia: New Horizons | Website | November 18</title>
+<link rel="icon" href="anhfaviconupdated.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+body{background:#000;color:#fff;overflow-x:hidden;}
+
+/* Top Bar */
+.topbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px;
+z-index:1000;
+}
+.menu-btn{
+width:30px;
+height:22px;
+cursor:pointer;
+position:relative;
+}
+.menu-btn span{
+position:absolute;
+width:100%;
+height:3px;
+background:#fff;
+transition:0.4s;
+}
+.menu-btn span:nth-child(1){top:0;}
+.menu-btn span:nth-child(2){top:9px;}
+.menu-btn span:nth-child(3){top:18px;}
+
+/* X animation */
+.menu-btn.active span:nth-child(1){transform:rotate(45deg);top:9px;}
+.menu-btn.active span:nth-child(2){opacity:0;}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg);top:9px;}
+
+/* Overlay Menu */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+opacity:0;
+visibility:hidden;
+transition:0.5s;
+z-index:900;
+}
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+.overlay img{
+width:120px;
+margin-bottom:20px;
+}
+.overlay a{
+color:#fff;
+text-decoration:none;
+font-size:28px;
+margin:15px;
+letter-spacing:2px;
+cursor:pointer;
+}
+
+/* Main Page */
+.main{
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+position:relative;
+overflow:hidden;
+}
+.main img{
+max-width:80%;
+opacity:0;
+transform:scale(0.8);
+transition:all 1s ease;
+}
+.main img.show{
+opacity:1;
+transform:scale(0.40);
+}
+
+.footer{
+position:fixed;
+bottom:10px;
+width:100%;
+text-align:center;
+color:gray;
+font-size:14px;
+}
+
+/* About Page */
+#about{
+display:none;
+padding:80px 20px;
+}
+.about-container{
+max-width:1000px;
+margin:auto;
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:center;
+gap:30px;
+}
+.about-container img{
+max-width:300px;
+border-radius:10px;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s forwards;
+}
+.about-text{
+max-width:500px;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s forwards;
+animation-delay:0.3s;
+}
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);}
+}
+
+.heading{
+color:lime;
+font-size:24px;
+margin-bottom:10px;
+}
+.info-label{color:lime;}
+.info-value{color:#fff;}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div class="menu-btn" id="menuBtn">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+
+<div class="overlay" id="overlay">
+<img src="ANHRELEASEDATEv2.png" alt="logo">
+<a onclick="goHome()">HOME</a>
+<a onclick="openAbout()">ABOUT</a>
+</div>
+
+<div class="main" id="home">
+<img id="mainLogo" src="ANHRELEASEDATEv2.png" alt="logo">
+</div>
+
+<div id="about">
+<div class="about-container">
+<img src="anhposter (1).png" alt="poster">
+<div class="about-text">
+<div class="heading">PREMISE</div>
+<p style="margin-bottom:20px;">
+Set four years after the original series, Nelson Sanchez is teleported into The Dark Woods. There, a local camping frog family leads him on adventures, twists, and friendships, all while he tries to find his way back home.
+</p>
+
+<p><span class="info-label">Created by:</span> <span class="info-value">Jayden 'Neo' Crespo</span></p>
+<p><span class="info-label">Based on:</span> <span class="info-value">Amphibia TV series by Matt Braly</span></p>
+<p><span class="info-label">Genre:</span> <span class="info-value">Action comedy / Adventure / Portal fantasy</span></p>
+<p><span class="info-label">Authors:</span> <span class="info-value">Jayden 'Neo' Crespo</span></p>
+<p class="info-value">Captain 'Duke Nerd' Bones</p>
+<p class="info-value">Parakalan</p>
+</div>
+</div>
+</div>
+
+<div class="footer">jlcrespo845@gmail.com - Jayden 'Neo' Crespo</div>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const overlay=document.getElementById('overlay');
+const main=document.getElementById('home');
+const about=document.getElementById('about');
+const mainLogo=document.getElementById('mainLogo');
+
+menuBtn.onclick=()=>{
+menuBtn.classList.toggle('active');
+overlay.classList.toggle('active');
+};
+
+function goHome(){
+about.style.display='none';
+main.style.display='flex';
+overlay.classList.remove('active');
+menuBtn.classList.remove('active');
+mainLogo.classList.remove('show');
+setTimeout(()=>{mainLogo.classList.add('show');},100);
+}
+
+function openAbout(){
+main.style.display='none';
+about.style.display='block';
+overlay.classList.remove('active');
+menuBtn.classList.remove('active');
+}
+
+// image animation on load
+window.onload=()=>{
+setTimeout(()=>{
+mainLogo.classList.add('show');
+},200);
+};
+</script>
+
+</body>
+</html>
