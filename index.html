@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 
-<!-- REQUIRED: Keep meta tags at the very top -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,21 +9,17 @@
 
 <link rel="icon" href="anhfaviconupdated.png">
 
-<!-- Prevent caching (helps Discord refresh embeds) -->
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
+
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="pragma" content="no-cache">
 
-<!-- Theme color (Discord uses this sometimes) -->
 <meta name="theme-color" content="#000000">
 
-<!-- Description -->
 <meta name="description" content="First issue releases worldwide November 18">
 
-<!-- Canonical URL -->
-<link rel="canonical" href="https://jlcrespo845-star.github.io/amphibianewhorizons/">
-
-<!-- Open Graph (Discord relies heavily on these) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amphibia: New Horizons">
 <meta property="og:title" content="Amphibia: New Horizons | Website | November 18">
@@ -32,22 +27,71 @@
 <meta property="og:url" content="https://jlcrespo845-star.github.io/amphibianewhorizons/">
 
 <meta property="og:image" content="https://jlcrespo845-star.github.io/amphibianewhorizons/thumbnailwebsite.png">
-<meta property="og:image:secure_url" content="https://jlcrespo845-star.github.io/amphibianewhorizons/thumbnailwebsite.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Amphibia: New Horizons Thumbnail">
-
-<!-- Twitter (still useful even if Discord ignores it) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Amphibia: New Horizons | Website | November 18">
-<meta name="twitter:description" content="First issue releases worldwide November 18">
-<meta name="twitter:image" content="https://jlcrespo845-star.github.io/amphibianewhorizons/thumbnailwebsite.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
-body{background:#000;color:#fff;overflow-x:hidden;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Sour Gummy', cursive;
+}
 
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* LOADING SCREEN */
+#loadingScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.loaderCircle{
+width:80px;
+height:80px;
+border:6px solid #333;
+border-top:6px solid white;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:20px;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+#percent{
+color:gray;
+font-size:20px;
+}
+
+#errorScreen{
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+}
+
+#errorScreen h1{
+color:lime;
+margin-bottom:10px;
+}
+
+/* TOP BAR */
 .topbar{
 position:fixed;
 top:0;
@@ -55,6 +99,9 @@ left:0;
 width:100%;
 padding:15px;
 z-index:1000;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
 .menu-btn{
@@ -76,10 +123,22 @@ transition:0.4s;
 .menu-btn span:nth-child(2){top:9px;}
 .menu-btn span:nth-child(3){top:18px;}
 
+.menu-text{
+cursor:pointer;
+color:#fff;
+transition:0.3s;
+}
+
+.menu-text:hover{
+color:gray;
+}
+
+/* MENU ACTIVE */
 .menu-btn.active span:nth-child(1){transform:rotate(45deg);top:9px;}
 .menu-btn.active span:nth-child(2){opacity:0;}
 .menu-btn.active span:nth-child(3){transform:rotate(-45deg);top:9px;}
 
+/* OVERLAY MENU */
 .overlay{
 position:fixed;
 top:0;
@@ -114,8 +173,14 @@ font-size:28px;
 margin:15px;
 letter-spacing:2px;
 cursor:pointer;
+transition:0.3s;
 }
 
+.overlay a:hover{
+color:lime;
+}
+
+/* MAIN */
 .main{
 display:flex;
 align-items:center;
@@ -134,18 +199,10 @@ transition:all 1s ease;
 
 .main img.show{
 opacity:1;
-transform:scale(0.40);
+transform:scale(0.4);
 }
 
-.footer{
-position:fixed;
-bottom:10px;
-width:100%;
-text-align:center;
-color:gray;
-font-size:14px;
-}
-
+/* ABOUT */
 #about{
 display:none;
 padding:80px 20px;
@@ -187,13 +244,76 @@ font-size:24px;
 margin-bottom:10px;
 }
 
+/* ACTIVE PAGE TEXT COLOR */
+.active-page{
+color:#367588 !important;
+}
+
+/* HOVER COLORS */
+.nav-link{
+cursor:pointer;
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:lime;
+}
+
 .info-label{color:lime;}
 .info-value{color:#fff;}
 
+.footer{
+position:fixed;
+bottom:10px;
+width:100%;
+text-align:center;
+color:gray;
+font-size:14px;
+}
+
+/* SOCIAL BUTTONS */
+.social-buttons{
+position:fixed;
+bottom:15px;
+right:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:1500;
+}
+
+.social-buttons a{
+text-decoration:none;
+background:#111;
+color:#fff;
+padding:10px 12px;
+border:1px solid #333;
+border-radius:8px;
+font-size:14px;
+transition:0.3s;
+text-align:center;
+}
+
+.social-buttons a:hover{
+background:#222;
+color:lime;
+border-color:lime;
+}
 </style>
 </head>
 
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loadingScreen">
+<div class="loaderCircle"></div>
+<div id="percent">0%</div>
+
+<div id="errorScreen">
+<h1>Connection Lost</h1>
+<p>Loading paused. Check your internet connection.</p>
+</div>
+</div>
 
 <div class="topbar">
 <div class="menu-btn" id="menuBtn">
@@ -201,12 +321,13 @@ margin-bottom:10px;
 <span></span>
 <span></span>
 </div>
+<span class="menu-text" id="menuText">Menu</span>
 </div>
 
 <div class="overlay" id="overlay">
 <img src="ANHRELEASEDATEv2.png" alt="logo">
-<a onclick="goHome()">HOME</a>
-<a onclick="openAbout()">ABOUT</a>
+<a class="nav-link" onclick="goHome()">HOME</a>
+<a class="nav-link" onclick="openAbout()">ABOUT</a>
 </div>
 
 <div class="main" id="home">
@@ -232,20 +353,86 @@ Set four years after the original series, Nelson Sanchez is teleported into The 
 </div>
 </div>
 
+<!-- SOCIAL MEDIA BUTTONS -->
+<div class="social-buttons">
+<a href="https://x.com/neonexus845" target="_blank">Twitter / X</a>
+<a href="https://www.deviantart.com/neonexus845" target="_blank">DeviantArt</a>
+<a href="https://www.reddit.com/user/NeoOfficialAccount/" target="_blank">Reddit</a>
+</div>
+
 <div class="footer">jlcrespo845@gmail.com - Jayden 'Neo' Crespo</div>
 
 <script>
 const menuBtn=document.getElementById('menuBtn');
+const menuText=document.getElementById('menuText');
 const overlay=document.getElementById('overlay');
 const main=document.getElementById('home');
 const about=document.getElementById('about');
 const mainLogo=document.getElementById('mainLogo');
 
-menuBtn.onclick=()=>{
+/* MENU TOGGLE */
+function toggleMenu(){
 menuBtn.classList.toggle('active');
 overlay.classList.toggle('active');
-};
+}
 
+menuBtn.onclick=toggleMenu;
+menuText.onclick=toggleMenu;
+
+/* LOADING SYSTEM */
+const loadingScreen=document.getElementById('loadingScreen');
+const percentText=document.getElementById('percent');
+const errorScreen=document.getElementById('errorScreen');
+
+let percent=0;
+let loadingInterval=null;
+let loadingCompleted=false;
+
+function startLoading(){
+if(loadingCompleted) return;
+
+clearInterval(loadingInterval);
+
+percent=0;
+percentText.style.display="block";
+errorScreen.style.display="none";
+
+loadingInterval=setInterval(()=>{
+if(!navigator.onLine){
+clearInterval(loadingInterval);
+percentText.style.display="none";
+errorScreen.style.display="flex";
+return;
+}
+
+if(percent<100){
+percent++;
+percentText.innerText=percent+"%";
+}else{
+clearInterval(loadingInterval);
+loadingCompleted=true;
+setTimeout(()=>{
+loadingScreen.style.display="none";
+mainLogo.classList.add('show');
+},500);
+}
+},50);
+}
+
+/* Restart loading when back online */
+window.addEventListener('online', ()=>{
+startLoading();
+});
+
+window.addEventListener('offline', ()=>{
+clearInterval(loadingInterval);
+percentText.style.display="none";
+errorScreen.style.display="flex";
+});
+
+window.addEventListener('load', startLoading);
+
+/* NAV FUNCTIONS */
 function goHome(){
 about.style.display='none';
 main.style.display='flex';
@@ -253,6 +440,7 @@ overlay.classList.remove('active');
 menuBtn.classList.remove('active');
 mainLogo.classList.remove('show');
 setTimeout(()=>{mainLogo.classList.add('show');},100);
+setActiveLink("home");
 }
 
 function openAbout(){
@@ -260,13 +448,18 @@ main.style.display='none';
 about.style.display='block';
 overlay.classList.remove('active');
 menuBtn.classList.remove('active');
+setActiveLink("about");
 }
 
-window.onload=()=>{
-setTimeout(()=>{
-mainLogo.classList.add('show');
-},200);
-};
+/* ACTIVE LINK COLOR */
+function setActiveLink(page){
+document.querySelectorAll('.nav-link').forEach(el=>{
+el.classList.remove('active-page');
+if(el.innerText.toLowerCase()===page){
+el.classList.add('active-page');
+}
+});
+}
 </script>
 
 </body>
