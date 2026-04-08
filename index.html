@@ -262,6 +262,7 @@ color:lime;
 .info-label{color:lime;}
 .info-value{color:#fff;}
 
+/* FOOTER */
 .footer{
 position:fixed;
 bottom:10px;
@@ -272,32 +273,22 @@ font-size:14px;
 }
 
 /* SOCIAL BUTTONS */
-.social-buttons{
-position:fixed;
-bottom:15px;
-right:15px;
+.socials{
+margin-top:8px;
 display:flex;
-flex-direction:column;
-gap:10px;
-z-index:1500;
+justify-content:center;
+gap:15px;
 }
 
-.social-buttons a{
-text-decoration:none;
-background:#111;
+.socials a{
 color:#fff;
-padding:10px 12px;
-border:1px solid #333;
-border-radius:8px;
+text-decoration:none;
 font-size:14px;
 transition:0.3s;
-text-align:center;
 }
 
-.social-buttons a:hover{
-background:#222;
+.socials a:hover{
 color:lime;
-border-color:lime;
 }
 </style>
 </head>
@@ -346,21 +337,20 @@ Set four years after the original series, Nelson Sanchez is teleported into The 
 <p><span class="info-label">Created by:</span> <span class="info-value">Jayden 'Neo' Crespo</span></p>
 <p><span class="info-label">Based on:</span> <span class="info-value">Amphibia TV series by Matt Braly</span></p>
 <p><span class="info-label">Genre:</span> <span class="info-value">Action comedy / Adventure / Portal fantasy</span></p>
-<p><span class="info-label">Authors:</span> <span class="info-value">Jayden 'Neo' Crespo</span></p>
-<p class="info-value">Captain 'Duke Nerd' Bones</p>
-<p class="info-value">Parakalan</p>
+<p><span class="info-label">Authors:</span> <span class="info-value">Jayden 'Neo' Crespo, Captain 'Duke' Bones, Parakalan</span></p>
+
 </div>
 </div>
 </div>
 
-<!-- SOCIAL MEDIA BUTTONS -->
-<div class="social-buttons">
-<a href="https://x.com/neonexus845" target="_blank">Twitter / X</a>
+<div class="footer">
+jlcrespo845@gmail.com - Jayden 'Neo' Crespo
+<div class="socials">
+<a href="https://x.com/neonexus845" target="_blank">Twitter</a>
 <a href="https://www.deviantart.com/neonexus845" target="_blank">DeviantArt</a>
 <a href="https://www.reddit.com/user/NeoOfficialAccount/" target="_blank">Reddit</a>
 </div>
-
-<div class="footer">jlcrespo845@gmail.com - Jayden 'Neo' Crespo</div>
+</div>
 
 <script>
 const menuBtn=document.getElementById('menuBtn');
